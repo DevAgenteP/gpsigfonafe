@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CERTIFICACIONES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> </head>
+<body>
+    <div class="header-fixed">
+        <div class="top-bar">
+            <div class="menu-btn" id="menuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="../index.html" class="logo-fonafe">
+                <img src="../images/logo-fonafe.png" alt="Logo de FONAFE">
+            </a>
+        </div>
+        <div class="franja-roja">CERTIFICACIONES</div>
+    </div>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="logo-container">
+            <div class="logo-circle">
+                <img src="../images/logo-fonafe-reducido.png" alt="Logo FONAFE">
+            </div>
+        </div>
+        <a href="../index.html" class="menu-item"><i class="fas fa-home home-icon"></i> Inicio</a>
+        <a href="https://fonafegob.sharepoint.com/sites/fonafesig/rng" target="_blank" class="menu-item">Repositorio de Normas de Gestión</a>
+        <a href="certificaciones.html" class="menu-item">Certificaciones</a>
+        <a href="docinfo.html" class="menu-item">Documentos Informativos</a>
+        <a href="gprocesos.html" class="menu-item">Gestión por Procesos</a>
+        <a href="ryo.html" class="menu-item">Riesgos y Oportunidades</a>
+        <a href="bi.html" class="menu-item">Dashboards</a>
+    </div>
+
+    <div class="main-content">
+        <div class="lienzo">
+            <div class="content-container">
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <a href="../index.html" class="panel-izquierdo-sub" style="background-image: url('../images/gpsig.webp'); background-size: cover; background-position: center;">
+                        <div class="titulo-sub">
+                            <i class="fas fa-arrow-left arrow-icon"></i> GESTION DE PROCESOS Y SIG (GP-SIG)
+                        </div>
+                        <div class="main-content-sub-left">
+                        </div>
+                    </a>
+
+                    <div class="nav-panel-below-left" id="certificacionesNavPanel">
+                        <a href="https://intranet.fonafe.gob.pe/sites/cdoc/pmc/Documentos%20Compartidos/Certificaciones/Vigentes/ISO_9001.pdf" class="nav-item" target="_blank">ISO 9001</a>
+                        <a href="https://intranet.fonafe.gob.pe/sites/cdoc/pmc/Documentos%20Compartidos/Certificaciones/Vigentes/ISO_37001.pdf" class="nav-item" target="_blank">ISO 37001</a>
+                        <a href="https://intranet.fonafe.gob.pe/sites/cdoc/pmc/Documentos%20Compartidos/Forms/AllItems.aspx?RootFolder=%2Fsites%2Fcdoc%2Fpmc%2FDocumentos%20Compartidos%2FCertificaciones%2FObsoletas" class="nav-item" target="_blank">Obsoletas</a>
+                    </div>
+                </div>
+
+                <div class="rectangulos-sub">
+                    <a href="https://intranet.fonafe.gob.pe/sites/cdoc/pmc/Documentos%20Compartidos/Certificaciones/Vigentes/ISO_9001.pdf" class="rect-sub" target="_blank">
+                        <div class="titulo-rect-sub">ISO 9001</div>
+                        <div class="icon-circle-container">
+                            <i class="material-icons">verified</i>
+                        </div>
+                    </a>
+                    <a href="https://intranet.fonafe.gob.pe/sites/cdoc/pmc/Documentos%20Compartidos/Certificaciones/Vigentes/ISO_37001.pdf" class="rect-sub" target="_blank">
+                        <div class="titulo-rect-sub">ISO 37001</div>
+                        <div class="icon-circle-container">
+                            <i class="material-icons">handshake</i>
+                        </div>
+                    </a>
+                    <a href="https://intranet.fonafe.gob.pe/sites/cdoc/pmc/Documentos%20Compartidos/Forms/AllItems.aspx?RootFolder=%2Fsites%2Fcdoc%2Fpmc%2FDocumentos%20Compartidos%2FCertificaciones%2FObsoletas" class="rect-sub" target="_blank">
+                        <div class="titulo-rect-sub">OBSOLETAS</div>
+                        <div class="icon-circle-container">
+                            <i class="material-icons">delete_forever</i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sideMenu = document.getElementById('sideMenu');
+
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sideMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!sideMenu.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) {
+                sideMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

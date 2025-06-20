@@ -1,0 +1,747 @@
+/* CSS general del sitio */
+body {
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    padding: 0; /* Elimina el padding predeterminado del cuerpo */
+    background-color: white; /* Color de fondo blanco para toda la página */
+    font-family: sans-serif; /* Fuente general para el texto */
+    overflow-x: hidden; /* Evita el scroll horizontal no deseado */
+}
+
+/* Estilos para el encabezado fijo en la parte superior de la página */
+.header-fixed {
+    position: fixed; /* Fija el encabezado en la posición */
+    top: 0; /* Lo alinea en la parte superior */
+    left: 0; /* Lo alinea a la izquierda */
+    width: 100%; /* Ocupa todo el ancho de la ventana */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    background-color: white; /* Fondo blanco para el encabezado */
+    display: flex; /* Utiliza Flexbox para organizar sus elementos */
+    flex-direction: column; /* Organiza los elementos en columna (top-bar y franja-roja) */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+/* Barra superior dentro del encabezado (donde está el menú y el logo) */
+.top-bar {
+    display: flex; /* Utiliza Flexbox */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente (útil para el logo) */
+    padding: 10px 20px; /* Espaciado interno superior/inferior y lateral */
+    height: 51px; /* Altura fija de la barra */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    position: relative; /* Necesario para posicionar el botón de menú absolutamente */
+}
+
+/* Botón de menú hamburguesa */
+.menu-btn {
+    position: absolute; /* Posicionamiento absoluto dentro de .top-bar */
+    left: 30px; /* Se posiciona a 30px del borde izquierdo */
+    width: 27px; /* Ancho del botón */
+    height: 27px; /* Alto del botón */
+    display: flex; /* Utiliza Flexbox */
+    flex-direction: column; /* Las barras del menú se apilan verticalmente */
+    justify-content: center; /* Centra las barras verticalmente */
+    align-items: center; /* Centra las barras horizontalmente */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar por encima */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 4px; /* Bordes ligeramente redondeados */
+}
+
+/* Barras individuales del icono de menú */
+.menu-btn span {
+    display: block; /* Cada barra es un bloque */
+    width: 70%; /* Ancho de la barra relativo al botón */
+    height: 3px; /* Grosor de la barra (AUMENTADO) */
+    background-color: #333; /* Color de las barras */
+    margin: 2px 0; /* Margen superior e inferior entre las barras */
+}
+
+/* Contenedor del logo de FONAFE */
+.logo-fonafe {
+    /* Ajustado para ser 50% más grande que el tamaño original de 120px x 40px */
+    width: 180px; /* Ancho del contenedor del logo (120 * 1.3 = 156) */
+    height: 60px;  /* Alto del contenedor del logo (40 * 1.3 = 52) */
+    display: flex; /* Utiliza Flexbox para centrar la imagen dentro */
+    align-items: center; /* Centra la imagen verticalmente */
+    justify-content: center; /* Centra la imagen horizontalmente */
+    margin: 0 auto; /* Centra el contenedor del logo en la barra superior */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    text-decoration: none; /* Elimina el subrayado si es un enlace */
+    color: inherit; /* Hereda el color del texto (aunque aquí no hay texto visible) */
+}
+
+/* Estilo para la imagen dentro del logo-fonafe para que se ajuste a su contenedor */
+.logo-fonafe img {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho de su contenedor (.logo-fonafe) */
+    max-height: 100%; /* Asegura que la imagen no exceda el alto de su contenedor */
+    object-fit: contain; /* Mantiene la proporción de la imagen dentro del contenedor sin recortarla */
+    display: block; /* Elimina cualquier espacio adicional debajo de la imagen */
+}
+
+/* Franja roja debajo de la barra superior */
+.franja-roja {
+    width: 100%; /* Ocupa todo el ancho */
+    height: 45px; /* Altura fija */
+    background-color: #CD202C; /* Color rojo distintivo de FONAFE */
+    color: white; /* Color del texto */
+    display: flex; /* Utiliza Flexbox */
+    align-items: center; /* Centra el texto verticalmente */
+    justify-content: center; /* Centra el texto horizontalmente */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 1.1rem; /* Tamaño de fuente */
+}
+
+/* Menú lateral (oculto por defecto) */
+.side-menu {
+    position: fixed; /* Fija el menú en la ventana */
+    top: 0; /* Alineado en la parte superior */
+    left: -300px; /* Inicialmente fuera de la pantalla (oculto) */
+    width: 250px; /* Ancho del menú */
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    background-color: #CD202C; /* Fondo rojo para el menú lateral */
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1); /* Sombra para dar profundidad */
+    z-index: 1001; /* Mayor que el header-fixed para que esté por encima */
+    transition: left 0.3s ease; /* Suaviza la animación al mostrar/ocultar */
+    display: flex; /* Añadido para Flexbox */
+    flex-direction: column; /* Organiza los elementos en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    padding-top: 20px; /* AJUSTADO: Espaciado superior para el logo y otros elementos, movido más arriba */
+}
+
+/* Clase para mostrar el menú lateral (activada con JavaScript) */
+.side-menu.active {
+    left: 0; /* Desliza el menú para que sea visible */
+}
+
+/* Contenedor del logo de FONAFE dentro del menú lateral */
+.side-menu .logo-container {
+    width: 100%; /* Ocupa el ancho completo del menú lateral */
+    height: 120px; /* Altura para el contenedor del logo, ajustado para el espacio */
+    display: flex; /* Usa flexbox para centrar el círculo */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    margin-top: -25px; /* AJUSTADO: Se mueve más arriba para compensar el nuevo padding-top del side-menu */
+    margin-bottom: 0px; /* AJUSTADO: Elimina el espacio debajo del logo antes de los ítems del menú */
+}
+
+/* Círculo blanco para el logo dentro del menú lateral */
+.side-menu .logo-circle {
+    width: 60px; /* Tamaño del círculo, ajustado para simetría */
+    height: 60px; /* Tamaño del círculo, ajustado para simetría */
+    background-color: white; /* Fondo blanco para el círculo */
+    border-radius: 50%; /* Lo hace circular */
+    display: flex; /* Usa flexbox para centrar la imagen */
+    align-items: center; /* Centra verticalmente la imagen */
+    justify-content: center; /* Centra horizontalmente la imagen */
+    overflow: hidden; /* Asegura que la imagen no se desborde del círculo */
+}
+
+/* Imagen del logo de FONAFE dentro del círculo */
+.side-menu .logo-circle img {
+    max-width: 80%; /* Reduce el tamaño de la imagen para que quepa bien dentro del círculo */
+    max-height: 80%; /* Reduce el tamaño de la imagen para que quepa bien dentro del círculo */
+    object-fit: contain; /* Asegura que la imagen se adapte sin distorsionarse */
+}
+
+/* Estilo para cada elemento del menú lateral */
+.menu-item {
+    padding: 12px 20px; /* Espaciado interno */
+    border-bottom: 1px solid rgba(255,255,255,0.2); /* Borde inferior para separar ítems (Ajustado para fondo rojo) */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    text-decoration: none; /* Elimina el subrayado */
+    color: white; /* Color del texto blanco */
+    display: flex; /* Utiliza Flexbox para alinear contenido (ej. icono) */
+    align-items: center; /* Centra el contenido verticalmente */
+    width: 100%; /* Ocupa el ancho completo del menú */
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
+    /* Alinea el contenido (icono + texto) al inicio del ítem del menú */
+    justify-content: flex-start;
+}
+
+/* Estilo para los iconos de Font Awesome dentro de los elementos del menú lateral */
+.side-menu .menu-item i.fas {
+    margin-right: 10px; /* Espacio a la derecha del icono */
+    vertical-align: middle; /* Alineación vertical al medio */
+    display: inline-block; /* Asegura que el margin-right funcione correctamente */
+}
+
+/* Elimina el borde inferior del último elemento del menú */
+.side-menu .menu-item:last-child {
+    border-bottom: none;
+}
+
+/* Efecto hover para los elementos del menú (ROJO MÁS FUERTE) */
+.menu-item:hover {
+    background-color: #A31A23; /* Rojo más oscuro al pasar el ratón */
+}
+
+/* Contenido principal de la página */
+.main-content {
+    margin-top: calc(51px + 45px + 20px); /* Margen superior para dejar espacio al encabezado fijo */
+    padding: 20px; /* Espaciado interno general */
+    display: flex; /* Utiliza Flexbox */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: flex-start; /* Asegura que el contenido empiece en la parte superior */
+}
+
+/* Contenedor principal del lienzo (simula un área de trabajo central) */
+.lienzo {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 32cm; /* Ancho máximo para el "lienzo" */
+    position: relative; /* Permite posicionamiento absoluto de elementos internos */
+    background-color: white; /* Fondo blanco */
+    display: flex; /* Utiliza Flexbox */
+    flex-direction: column; /* Organiza los elementos en columna */
+    align-items: center; /* Centra los elementos horizontalmente dentro del lienzo */
+}
+
+/* Contenedor interno que organiza el panel izquierdo y los rectángulos de la derecha */
+.content-container {
+    display: flex; /* Utiliza Flexbox para panel izquierdo y rectángulos */
+    width: 100%; /* Ocupa todo el ancho del lienzo */
+    max-width: 30cm; /* Ancho máximo para el contenido */
+    margin-top: 10px; /* Margen superior */
+}
+
+/* Panel izquierdo principal (usado en index.html) */
+.panel-izquierdo {
+    width: 9cm; /* Ancho fijo */
+    height: 9.4cm; /* Alto fijo */
+    border: 1px solid #D9D9D9; /* Borde gris */
+    border-radius: 2px; /* Bordes ligeramente redondeados */
+    display: flex; /* Utiliza Flexbox */
+    flex-direction: column; /* Elementos apilados verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    overflow: hidden; /* Oculta contenido que se desborda */
+    margin-right: 0.25cm; /* Espacio a la derecha */
+    justify-content: flex-start; /* Alinea el contenido en la parte superior */
+    text-align: center; /* Centra el texto */
+    padding-top: 0; /* Sin padding superior */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Hereda el color del texto */
+    background-color: rgba(86, 90, 92, 0.15); /* Aplicado para efecto hover */
+    transition: background-color 0.3s ease; /* Suaviza la transición */
+}
+
+/* Efecto hover para el panel izquierdo de index.html */
+.panel-izquierdo:hover {
+    background-color: rgba(86, 90, 92, 0.25); /* Se oscurece al pasar el ratón */
+}
+
+/* Título de la franja superior del panel izquierdo principal */
+.panel-izquierdo .titulo {
+    width: 100%; /* Ocupa todo el ancho */
+    height: 0.54cm; /* Altura fija */
+    background-color: rgba(54, 55, 53, 0.67); /* Color negro #363735 con 67% de transparencia (UNIFICADO) */
+    color: white; /* Color del texto */
+    display: flex; /* Utiliza Flexbox */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    margin-bottom: 0; /* Sin margen inferior */
+}
+
+/* Contenido principal dentro del panel izquierdo */
+.panel-izquierdo .main-content-left {
+    display: flex; /* Utiliza Flexbox */
+    flex-direction: column; /* Elementos apilados verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+    flex-grow: 1; /* Permite que este elemento crezca para ocupar el espacio restante */
+    padding: 10px; /* Espaciado interno */
+}
+
+/* Estilos para el texto "GESTIÓN DE PROCESOS Y SIG (GP-SIG)" */
+.panel-izquierdo .main-title-left {
+    font-size: 1.8rem; /* Tamaño de fuente: 1.5rem * 1.20 (20% más) = 1.8rem */
+    font-weight: bold; /* Se mantiene bold */
+    color: #CD202C; /* Color de texto rojo (#CD202C) */
+    margin-bottom: 0.5cm; /* Margen inferior */
+    line-height: 1.2; /* Espaciado entre líneas */
+    padding: 0 10px; /* Padding horizontal */
+    text-shadow: 0.5px 0 0 #CD202C; /* Sugerencia para "engrosar" visualmente si la fuente no soporta el bold */
+}
+
+/* Contenedor del logo GP-SIG con el círculo blanco */
+.panel-izquierdo .logo-gp-sig-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; /* Fondo blanco para el círculo */
+    border-radius: 50%; /* Hace que el contenedor sea circular */
+    width: 6.5rem; /* Tamaño del círculo (ajustable) */
+    height: 6.5rem; /* Debe ser igual al ancho para un círculo perfecto */
+    overflow: hidden; /* Asegura que el logo no se salga del círculo */
+    margin-top: 0.5cm;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil para darle relieve */
+}
+
+/* Imagen dentro del contenedor del logo GP-SIG */
+.panel-izquierdo .logo-gp-sig-icon img {
+    max-width: 83%; /* El logo ocupa el 83% del círculo, dejando un 17% de "margen" */
+    max-height: 83%; /* Lo mismo para la altura */
+    object-fit: contain; /* Asegura que la imagen se adapte sin distorsionarse */
+}
+
+/* Contenedor de los rectángulos de la derecha en index.html */
+.rectangulos {
+    display: grid; /* Utiliza CSS Grid para organizar los rectángulos */
+    grid-template-columns: repeat(3, 6.6cm); /* 3 columnas, cada una de 6.6cm de ancho */
+    grid-template-rows: repeat(2, 4.6cm); /* 2 filas, cada una de 4.6cm de alto */
+    gap: 0.25cm; /* Espacio entre los elementos de la cuadrícula */
+    margin-left: 0.25cm; /* Margen a la izquierda para separarlo del panel izquierdo */
+}
+
+/* Estilo para cada rectángulo individual en index.html */
+.rect {
+    position: relative; /* Permite posicionar el título absolutamente dentro */
+    width: 6.6cm; /* Ancho fijo */
+    height: 4.6cm; /* Alto fijo */
+    border-radius: 2px; /* Bordes ligeramente redondeados */
+    border: 1px solid #D9D9D9; /* Borde gris */
+    background-size: cover; /* La imagen de fondo cubrirá todo el área */
+    background-position: center; /* Centra la imagen de fondo */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que se desborda */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Hereda el color del texto */
+    /* TRANSICIÓN: Ahora también incluye el borde y la sombra */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover para los rectángulos en index.html */
+.rect:hover {
+    /* CAMBIO PRINCIPAL AQUÍ: Borde rojo y sombra para un efecto más notorio */
+    background-color: rgba(205, 32, 44, 0.15); /* Mantenemos un ligero tinte rojo, pero menos opaco */
+    border-color: #CD202C; /* Borde rojo */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra más fuerte para efecto de "levantamiento" */
+}
+
+/* Título superpuesto en cada rectángulo de index.html */
+.rect .titulo-rect {
+    position: absolute; /* Posicionamiento absoluto */
+    top: 0; /* Arriba del rectángulo */
+    left: 0; /* A la izquierda del rectángulo */
+    width: 100%; /* Ocupa todo el ancho del rectángulo */
+    height: 1.125cm; /* Altura fija de la franja del título */
+    background-color: rgba(54, 55, 53, 0.67); /* Color negro #363735 con 67% de transparencia (UNIFICADO) */
+    color: white; /* Color del texto */
+    display: flex; /* Utiliza Flexbox */
+    align-items: center; /* Centra el texto verticalmente */
+    justify-content: center; /* Centra el texto horizontalmente */
+    font-weight: 600; /* Peso de la fuente seminegrita */
+    font-size: 0.9rem; /* Tamaño de fuente */
+    padding: 5px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluye padding y border en el ancho/alto */
+    text-align: center; /* Centra el texto (por si ocupa varias líneas) */
+    line-height: 1.2; /* Espaciado entre líneas */
+}
+
+/* Estilos específicos para las subpáginas (ryo.html, certificaciones.html, etc.) */
+
+/* Título de página específico para RyO */
+.page-title-ryo {
+    font-size: 2rem; /* Tamaño de fuente grande */
+    color: #333; /* Color de texto oscuro */
+    margin-bottom: 20px; /* Margen inferior */
+    text-align: center; /* Centra el texto */
+    width: 100%; /* Ocupa todo el ancho */
+}
+
+/* Panel informativo en RyO */
+.panel-info-ryo {
+    width: 100%; /* Ocupa todo el ancho */
+    max-width: 30cm; /* Ancho máximo */
+    margin-bottom: 20px; /* Margen inferior */
+    padding: 15px 20px; /* Espaciado interno */
+    border: 1px solid #D9D9D9; /* Borde gris */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo gris muy claro */
+    text-align: justify; /* Justifica el texto */
+    line-height: 1.6; /* Espaciado entre líneas */
+    font-size: 0.95rem; /* Tamaño de fuente */
+    color: #555; /* Color de texto */
+    box-sizing: border-box; /* Incluye padding y border en el ancho/alto */
+}
+
+/* Contenedor de botones en RyO */
+.buttons-container-ryo {
+    display: flex; /* Utiliza Flexbox */
+    flex-wrap: wrap; /* Permite que los botones se envuelvan */
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 20px; /* Espacio entre los botones */
+    width: 100%; /* Ocupa todo el ancho */
+    max-width: 30cm; /* Ancho máximo */
+}
+
+/* Estilo para los botones principales de RyO */
+.ryo-button {
+    padding: 15px 30px; /* Espaciado interno del botón */
+    background-color: #CD202C; /* Color rojo de la franja */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 1.1rem; /* Tamaño de fuente */
+    transition: background-color 0.3s ease; /* Suaviza el cambio de color al pasar el ratón */
+    white-space: nowrap; /* Evita que el texto del botón se divida en varias líneas */
+}
+
+/* Efecto hover para los botones de RyO */
+.ryo-button:hover {
+    background-color: #A31A23; /* Un rojo más oscuro al pasar el ratón */
+}
+
+/* Panel izquierdo en subpáginas (ej. ryo.html, certificaciones.html) */
+.panel-izquierdo-sub {
+    width: 9cm; /* Ancho fijo */
+    height: 4.23cm; /* Altura ajustada para este panel */
+    border: 1px solid #D9D9D9; /* Borde gris */
+    border-radius: 2px; /* Bordes ligeramente redondeados */
+    display: flex; /* Utiliza Flexbox */
+    flex-direction: column; /* Elementos apilados verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    overflow: hidden; /* Oculta contenido que se desborda */
+    margin-right: 0.25cm; /* Espacio a la derecha */
+    text-align: center; /* Centra el texto */
+    padding-top: 0; /* Sin padding superior */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Hereda el color del texto */
+    /* **CAMBIO AQUÍ: Ahora con la imagen de fondo por defecto y transición para el hover completo** */
+    background-color: transparent; /* Se establece a transparente porque la imagen de fondo ya cubre */
+    background-size: cover; /* La imagen de fondo cubrirá todo el área */
+    background-position: center; /* Centra la imagen de fondo */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Transición completa */
+}
+
+/* Efecto hover para el panel izquierdo en subpáginas */
+.panel-izquierdo-sub:hover {
+    /* **CAMBIO AQUÍ: Aplica el borde rojo y la sombra replicando el efecto de .rect:hover** */
+    background-color: rgba(205, 32, 44, 0.15); /* Mantenemos un ligero tinte rojo, pero menos opaco */
+    border-color: #CD202C; /* Borde rojo */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra más fuerte para efecto de "levantamiento" */
+}
+
+/* Título de la franja superior del panel izquierdo en subpáginas de RyO */
+.panel-izquierdo-sub .titulo-sub {
+    width: 100%; /* Ocupa todo el ancho */
+    height: 1.125cm; /* Altura fija de la franja del título */
+    background-color: rgba(54, 55, 53, 0.67); /* Color negro #363735 con 67% de transparencia (UNIFICADO) */
+    color: white; /* Color del texto */
+    display: flex; /* Utiliza Flexbox */
+    align-items: center; /* Centra el texto verticalmente */
+    justify-content: center; /* Centra el texto horizontalmente */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 0.9rem; /* Tamaño de fuente */
+    margin-bottom: 0; /* Sin margen inferior */
+    padding: 5px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho/alto */
+    line-height: 1.2; /* Espaciado entre líneas */
+}
+
+/* Estilo para el icono de flecha dentro del título del panel izquierdo sub */
+.panel-izquierdo-sub .titulo-sub .arrow-icon {
+    margin-right: 8px; /* Espacio a la derecha del icono */
+    font-size: 1.1rem; /* Tamaño del icono */
+}
+
+/* Contenido principal dentro del panel izquierdo sub */
+.panel-izquierdo-sub .main-content-sub-left {
+    display: flex; /* Utiliza Flexbox */
+    flex-direction: column; /* Elementos apilados verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+    flex-grow: 1; /* Permite que este elemento crezca para ocupar el espacio restante */
+    padding: 10px; /* Espaciado interno */
+    color: #555; /* Color del texto */
+    font-size: 0.9rem; /* Tamaño de fuente */
+}
+
+/* Panel de Navegación debajo del panel izquierdo en subpáginas */
+.nav-panel-below-left {
+    width: 9cm; /* Ancho fijo */
+    border: 1px solid #D9D9D9; /* Borde gris */
+    border-radius: 2px; /* Bordes ligeramente redondeados */
+    margin-right: 0.25cm; /* Espacio a la derecha */
+    margin-top: 0.25cm; /* Margen superior para separarlo del panel de arriba */
+    padding: 5px 0; /* Espaciado interno vertical */
+    background-color: white; /* Fondo blanco */
+    box-sizing: border-box; /* Incluye padding y border en el ancho/alto */
+}
+
+/* Estilo para cada elemento de navegación dentro del panel */
+.nav-panel-below-left .nav-item {
+    padding: 7px 15px; /* Espaciado interno */
+    font-size: 0.756rem; /* Tamaño de fuente ajustado */
+    color: #333; /* Color del texto */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    border-bottom: 1px solid #eee; /* Borde inferior para separar ítems */
+    text-decoration: none; /* Elimina el subrayado */
+    display: block; /* Ocupa todo el ancho disponible */
+}
+
+/* Elimina el borde inferior del último elemento de navegación */
+.nav-panel-below-left .nav-item:last-child {
+    border-bottom: none;
+}
+
+/* Efecto hover para los elementos de navegación */
+.nav-panel-below-left .nav-item:hover {
+    background-color: rgba(205, 32, 44, 0.1); /* Rojo (#CD202C) con 10% de transparencia para un efecto translúcido */
+}
+
+/* Contenedor de rectángulos en subpáginas */
+.rectangulos-sub {
+    display: grid; /* Utiliza CSS Grid */
+    grid-template-columns: repeat(3, 6.6cm); /* 3 columnas de 6.6cm */
+    gap: 0.25cm; /* Espacio entre los rectángulos */
+    margin-left: 0.25cm; /* Margen izquierdo */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    align-content: flex-start; /* Alinea el contenido al inicio */
+}
+
+/* Estilo para cada rectángulo individual en subpáginas */
+.rect-sub {
+    position: relative; /* Permite posicionar el título absolutamente dentro */
+    width: 6.6cm; /* Ancho fijo */
+    height: 4.6cm; /* Alto fijo */
+    border-radius: 2px; /* Bordes ligeramente redondeados */
+    border: 1px solid #D9D9D9; /* Borde gris */
+    background-color: rgba(86, 90, 92, 0.15); /* Color #565a5c con 15% de transparencia */
+    overflow: hidden; /* Oculta contenido que se desborda */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Hereda el color del texto */
+    display: flex; /* Para usar flexbox */
+    flex-direction: column; /* Elementos apilados verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: flex-start; /* Alinea los elementos (título y círculo) al inicio */
+    /* **REVERTIDO: Transición original** */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efecto hover para los rectángulos en subpáginas */
+.rect-sub:hover {
+    /* **REVERTIDO: Estilo original de hover** */
+    background-color: rgba(86, 90, 92, 0.25); /* Se oscurece al pasar el ratón */
+    border-color: #ADADAD; /* Mantiene el borde más oscuro al pasar el ratón */
+}
+
+/* Título superpuesto en cada rectángulo sub (ej. ryo.html) */
+.rect-sub .titulo-rect-sub {
+    position: absolute; /* Posicionamiento absoluto */
+    top: 0; /* Arriba del rectángulo */
+    left: 0; /* A la izquierda del rectángulo */
+    width: 100%; /* Ocupa todo el ancho */
+    height: 1.125cm; /* Altura fija de la franja del título */
+    background-color: rgba(54, 55, 53, 0.67); /* Color negro #363735 con 67% de transparencia (UNIFICADO) */
+    color: white; /* Color del texto */
+    display: flex; /* Utiliza Flexbox */
+    align-items: center; /* Centra el texto verticalmente */
+    justify-content: center; /* Centra el texto horizontalmente */
+    font-weight: 600; /* Peso de la fuente seminegrita */
+    font-size: 0.9rem; /* Tamaño de fuente */
+    padding: 5px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho/alto */
+    text-align: center; /* Centra el texto */
+    line-height: 1.2; /* Espaciado entre líneas */
+}
+
+/* Estilos para el círculo con icono dentro de los rectángulos de subpáginas */
+.icon-circle-container {
+    position: absolute; /* Posicionamiento absoluto dentro del rect-sub */
+    top: 50%; /* Punto de inicio para el ajuste vertical */
+    left: 50%; /* Centra horizontalmente respecto al padre */
+    /* Ajusta el centrado vertical hacia abajo: (altura del título / 2) + (altura del círculo / 2) - (ajuste fino) */
+    /* O directamente, una estimación visual basada en 1.125cm de título y 2.25cm de círculo */
+    transform: translate(-50%, calc(-50% + 1.125cm / 2 + 2.25cm / 2 - 1.15cm)); /* Ajuste manual para centrar mejor */
+    width: 2.25cm; /* 1.5cm * 1.5 = 2.25cm (50% más grande) */
+    height: 2.25cm; /* 1.5cm * 1.5 = 2.25cm (50% más grande) */
+    background-color: #CD202C; /* Color rojo */
+    border-radius: 50%; /* Hace el elemento circular */
+    display: flex; /* Usa flexbox para centrar el ícono */
+    align-items: center; /* Centra el ícono verticalmente */
+    justify-content: center; /* Centra el ícono horizontalmente */
+    z-index: 2; /* Asegura que esté por encima del fondo */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra suave para darle profundidad */
+}
+
+.icon-circle-container .material-icons {
+    color: white; /* Color blanco para el ícono */
+    font-size: 3.15rem; /* 2.25rem * 1.4 = 3.15rem (40% más grande) */
+    line-height: 1; /* Esto ayuda a centrar verticalmente algunos íconos */
+}
+
+
+/* Estilos para ryo-r_procesos-gerencias.html (botones de Riesgos Estratégicos y Operacionales) */
+.ryo-grid-buttons {
+    display: flex; /* Utiliza Flexbox */
+    flex-wrap: wrap; /* Permite que los botones se envuelvan */
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 20px; /* Espacio entre los botones */
+    width: 100%; /* Ocupa todo el ancho */
+    max-width: 30cm; /* Ancho máximo */
+}
+
+/* Estilo para cada botón de la cuadrícula en ryo-r_procesos-gerencias.html */
+.ryo-grid-button {
+    display: flex; /* Utiliza Flexbox */
+    flex-direction: column; /* Elementos apilados verticalmente (imagen, texto) */
+    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+    text-align: center; /* Centra el texto */
+    width: 15cm; /* Ancho fijo de cada botón */
+    height: 6cm; /* Altura fija de cada botón */
+    border: 1px solid #D9D9D9; /* Borde gris */
+    border-radius: 4px; /* Bordes redondeados */
+    text-decoration: none; /* Elimina el subrayado */
+    color: #333; /* Color del texto */
+    font-size: 1.2rem; /* Tamaño de fuente */
+    font-weight: bold; /* Texto en negrita */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Suaviza las transiciones */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra ligera */
+    padding: 10px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluye padding y border en el ancho/alto */
+}
+
+/* Efecto hover para los botones de la cuadrícula */
+.ryo-grid-button:hover {
+    background-color: #f5f5f5; /* Fondo gris claro al pasar el ratón */
+    border-color: #CD202C; /* Borde rojo al pasar el ratón */
+}
+
+/* Estilos para la tabla de gerencias */
+.gerencia-table {
+    width: 100%; /* Ocupa todo el ancho */
+    max-width: 30cm; /* Ancho máximo */
+    border-collapse: collapse; /* Colapsa los bordes de la tabla */
+    margin-top: 20px; /* Margen superior */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra ligera */
+}
+
+/* Estilos para las celdas de encabezado y datos de la tabla */
+.gerencia-table th, .gerencia-table td {
+    border: 1px solid #ddd; /* Borde gris claro */
+    padding: 10px 15px; /* Espaciado interno */
+    text-align: left; /* Alineación de texto a la izquierda */
+    vertical-align: middle; /* Alineación vertical al medio */
+}
+
+/* Estilos para los encabezados de la tabla */
+.gerencia-table th {
+    background-color: #f2f2f2; /* Fondo gris muy claro */
+    font-weight: bold; /* Texto en negrita */
+    color: #333; /* Color de texto oscuro */
+    font-size: 0.95rem; /* Tamaño de fuente */
+}
+
+/* Estilos para filas pares de la tabla (para un efecto de cebra) */
+.gerencia-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fondo ligeramente gris para filas pares */
+}
+
+/* Efecto hover para las filas de la tabla */
+.gerencia-table tr:hover {
+    background-color: #f0f0f0; /* Fondo gris más oscuro al pasar el ratón */
+}
+
+/* Estilo para los enlaces dentro de las celdas de la tabla */
+.gerencia-table td a {
+    color: #CD202C; /* Color rojo de enlace */
+    text-decoration: none; /* Sin subrayado por defecto */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Efecto hover para los enlaces de la tabla */
+.gerencia-table td a:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+}
+
+/* Ajustes responsivos básicos para tablas en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .gerencia-table,
+    .gerencia-table thead,
+    .gerencia-table tbody,
+    .gerencia-table th,
+    .gerencia-table td,
+    .gerencia-table tr {
+        display: block; /* Hace que todos los elementos se comporten como bloques */
+    }
+
+    /* Oculta los encabezados de la tabla en pantallas pequeñas */
+    .gerencia-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    /* Estilo para las filas en pantallas pequeñas */
+    .gerencia-table tr {
+        margin-bottom: 15px; /* Margen inferior entre filas */
+        border: 1px solid #ddd; /* Borde */
+        border-radius: 4px; /* Bordes redondeados */
+        overflow: hidden; /* Oculta cualquier contenido que se desborda */
+    }
+
+    /* Estilo para las celdas en pantallas pequeñas */
+    .gerencia-table td {
+        border: none; /* Elimina los bordes de celda */
+        border-bottom: 1px solid #eee; /* Borde inferior para separar datos */
+        position: relative; /* Para posicionar el pseudo-elemento :before */
+        padding-left: 50%; /* Espacio a la izquierda para el "encabezado" simulado */
+        text-align: right; /* Alinea el contenido a la derecha */
+    }
+
+    /* Crea un "encabezado" simulado para cada celda en pantallas pequeñas */
+    .gerencia-table td:before {
+        position: absolute; /* Posicionamiento absoluto */
+        top: 0; /* Arriba */
+        left: 6px; /* A la izquierda */
+        width: 45%; /* Ancho del "encabezado" */
+        padding-right: 10px; /* Espaciado a la derecha */
+        white-space: nowrap; /* Evita que el texto se rompa */
+        content: attr(data-label); /* Usa el atributo data-label del HTML como texto */
+        font-weight: bold; /* Texto en negrita */
+        text-align: left; /* Alinea el "encabezado" a la izquierda */
+    }
+}
+
+/* Estilos específicos para los rectángulos de Gerencias y Oficinas en ryo-r_procesos-gerencias.html */
+.rectangulos-gerencias {
+    display: grid; /* Utiliza CSS Grid para organizar los rectángulos */
+    grid-template-columns: repeat(3, 6.6cm); /* 3 columnas de 6.6cm de ancho */
+    gap: 0.25cm; /* Espacio entre los rectángulos */
+    margin-left: 0.25cm; /* Margen a la izquierda para separarlo del panel izquierdo */
+    flex-wrap: wrap; /* Permite que los rectángulos se envuelvan si no hay espacio */
+    align-content: flex-start; /* Alinea el contenido al inicio del contenedor */
+}
+
+/* Estilo para cada rectángulo individual de gerencia/oficina */
+.rect-gerencia {
+    position: relative; /* Permite posicionar elementos internos (aunque aquí no hay) */
+    width: 6.6cm; /* Ancho fijo */
+    height: 4.6cm; /* Alto fijo */
+    border-radius: 2px; /* Bordes ligeramente redondeados */
+    border: 1px solid #D9D9D9; /* Borde gris */
+    background-color: rgba(86, 90, 92, 0.15); /* Fondo unificado con rect-sub */
+    display: flex;
+    align-items: center; /* Centra el texto verticalmente */
+    justify-content: center; /* Centra el texto horizontalmente */
+    text-align: center; /* Asegura que el texto se centre si ocupa varias líneas */
+    overflow: hidden; /* Oculta cualquier contenido que se desborda */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    text-decoration: none; /* Elimina el subrayado si es un enlace */
+    color: #333; /* Color del texto oscuro */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 0.95rem; /* Tamaño de fuente */
+    padding: 10px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluye padding y border en el ancho/alto total */
+    line-height: 1.3; /* Espaciado entre líneas para mejor legibilidad */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Suaviza las transiciones al pasar el ratón */
+}
+
+/* Efecto hover para los rectángulos de gerencia/oficina */
+.rect-gerencia:hover {
+    background-color: rgba(86, 90, 92, 0.25); /* Efecto hover unificado con rect-sub */
+    border-color: #ADADAD; /* Mantiene el borde más oscuro al pasar el ratón */
+}
