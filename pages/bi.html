@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DASHBOARDS</title>
+    <base href="https://devagentep.github.io/gpsigfonafe/">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css"> <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="header-fixed">
@@ -16,9 +17,7 @@
                 <span></span>
                 <span></span>
             </div>
-            <a href="../index.html" class="logo-fonafe">
-                <img src="../images/logo-fonafe.png" alt="Logo de FONAFE">
-            </a>
+            <a href="index.html" class="logo-fonafe"> <img src="images/logo-fonafe.png" alt="Logo de FONAFE"> </a>
         </div>
         <div class="franja-roja">DASHBOARDS</div>
     </div>
@@ -29,8 +28,7 @@
         <div class="lienzo">
             <div class="content-container">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                    <a href="../index.html" class="panel-izquierdo-sub" style="background-image: url('../images/gpsig.webp'); background-size: cover; background-position: center;">
-                        <div class="titulo-sub">
+                    <a href="index.html" class="panel-izquierdo-sub" style="background-image: url('images/gpsig.webp'); background-size: cover; background-position: center;"> <div class="titulo-sub">
                             <i class="fas fa-arrow-left arrow-icon"></i> GESTION DE PROCESOS Y SIG (GP-SIG)
                         </div>
                         <div class="main-content-sub-left">
@@ -38,20 +36,16 @@
                     </a>
 
                     <div class="nav-panel-below-left" id="biNavPanel">
-                        <a href="bi-madurez.html" class="nav-item">Madurez de Sistemas de las Empresas</a>
-                        <a href="bi-certificaciones.html" class="nav-item">Certificaciones de las Empresas</a>
-                    </div>
+                        <a href="pages/bi-madurez.html" class="nav-item">Madurez de Sistemas de las Empresas</a> <a href="pages/bi-certificaciones.html" class="nav-item">Certificaciones de las Empresas</a> </div>
                 </div>
 
                 <div class="rectangulos-sub">
-                    <a href="bi-madurez.html" class="rect-sub">
-                        <div class="titulo-rect-sub">MADUREZ DE SISTEMAS DE LAS EMPRESAS</div>
+                    <a href="pages/bi-madurez.html" class="rect-sub"> <div class="titulo-rect-sub">MADUREZ DE SISTEMAS DE LAS EMPRESAS</div>
                         <div class="icon-circle-container">
                             <i class="material-icons">insights</i>
                         </div>
                     </a>
-                    <a href="bi-certificaciones.html" class="rect-sub">
-                        <div class="titulo-rect-sub">CERTIFICACIONES DE LAS EMPRESAS</div>
+                    <a href="pages/bi-certificaciones.html" class="rect-sub"> <div class="titulo-rect-sub">CERTIFICACIONES DE LAS EMPRESAS</div>
                         <div class="icon-circle-container">
                             <i class="material-icons">description</i>
                         </div>
@@ -74,7 +68,7 @@
                 .then(html => {
                     document.getElementById(elementId).innerHTML = html;
 
-                    // ***** IMPORTANTE: El script del menú hamburguesa se mueve aquí dentro *****
+                    // El script del menú hamburguesa se mantiene igual
                     const menuBtn = document.getElementById('menuBtn');
                     const sideMenu = document.getElementById('sideMenu');
 
@@ -90,13 +84,12 @@
                             }
                         });
                     }
-                    // ***** FIN del script del menú hamburguesa *****
                 })
                 .catch(error => console.error('Error cargando el menú lateral:', error));
         }
 
         // Cargar el menú lateral en el placeholder
-        loadHTML('sidebar-placeholder', '../sidebar.html');
+        loadHTML('sidebar-placeholder', 'sidebar.html'); // CAMBIADO de ../sidebar.html
     </script>
 </body>
 </html>
