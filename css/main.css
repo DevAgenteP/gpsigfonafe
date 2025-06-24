@@ -29,7 +29,7 @@ body {
     align-items: center; /* Centra los elementos verticalmente */
     justify-content: center; /* **CAMBIO CLAVE: Centra el contenido horizontalmente (útil para el logo)** */
     padding: 10px 20px; /* Espaciado interno superior/inferior y lateral (¡ahora es el que da el margen!) */
-    height: 51px; /* Altura fija de la barra */
+    height: 60px; /* Altura fija de la barra */
     width: 100%; /* Ocupa todo el ancho disponible */
     position: relative; /* Necesario para posicionar el botón de menú absolutamente */
     box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
