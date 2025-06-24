@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GP-SIG</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/main.css">
-</head>
+    <link rel="stylesheet" href="/css/main.css"> </head>
 <body>
     <div class="header-fixed">
         <div class="top-bar">
@@ -15,9 +14,7 @@
                 <span></span>
                 <span></span>
             </div>
-            <a href="index.html" class="logo-fonafe">
-                <img src="images/logo-fonafe.png" alt="Logo de FONAFE">
-            </a>
+            <a href="/index.html" class="logo-fonafe"> <img src="/images/logo-fonafe.png" alt="Logo de FONAFE"> </a>
         </div>
         <div class="franja-roja">GESTIÓN DE PROCESOS Y SIG (GP-SIG)</div>
     </div>
@@ -27,34 +24,26 @@
     <div class="main-content">
         <div class="lienzo">
             <div class="content-container">
-                <a href="index.html" class="panel-izquierdo">
-                    <div class="titulo"></div>
+                <a href="/index.html" class="panel-izquierdo"> <div class="titulo"></div>
                     <div class="main-content-left">
                         <div class="main-title-left">GESTIÓN DE PROCESOS Y SIG (GP-SIG)</div>
                         <div class="logo-gp-sig-icon">
-                            <img src="images/logo-gp-sig.png" alt="Logo GP-SIG">
-                        </div>
+                            <img src="/images/logo-gp-sig.png" alt="Logo GP-SIG"> </div>
                     </div>
                 </a>
 
                 <div class="rectangulos">
-                    <a href="https://fonafegob.sharepoint.com/sites/fonafesig/rng" target="_blank" class="rect" style="background-image: url('images/rng.webp');">
-                        <div class="titulo-rect">REPOSITORIO DE NORMAS DE GESTIÓN</div>
+                    <a href="https://fonafegob.sharepoint.com/sites/fonafesig/rng" target="_blank" class="rect" style="background-image: url('/images/rng.webp');"> <div class="titulo-rect">REPOSITORIO DE NORMAS DE GESTIÓN</div>
                     </a>
-                    <a href="pages/certificaciones.html" class="rect" style="background-image: url('images/certificaciones.webp');">
-                        <div class="titulo-rect">CERTIFICACIONES</div>
+                    <a href="/pages/certificaciones.html" class="rect" style="background-image: url('/images/certificaciones.webp');"> <div class="titulo-rect">CERTIFICACIONES</div>
                     </a>
-                    <a href="pages/docinfo.html" class="rect" style="background-image: url('images/docinfo.webp');">
-                        <div class="titulo-rect">DOCUMENTOS INFORMATIVOS</div>
+                    <a href="/pages/docinfo.html" class="rect" style="background-image: url('/images/docinfo.webp');"> <div class="titulo-rect">DOCUMENTOS INFORMATIVOS</div>
                     </a>
-                    <a href="pages/gprocesos.html" class="rect" style="background-image: url('images/gprocesos.webp');">
-                        <div class="titulo-rect">GESTIÓN POR PROCESOS</div>
+                    <a href="/pages/gprocesos.html" class="rect" style="background-image: url('/images/gprocesos.webp');"> <div class="titulo-rect">GESTIÓN POR PROCESOS</div>
                     </a>
-                    <a href="pages/ryo.html" class="rect" style="background-image: url('images/ryo.webp');">
-                        <div class="titulo-rect">RIESGOS Y OPORTUNIDADES</div>
+                    <a href="/pages/ryo.html" class="rect" style="background-image: url('/images/ryo.webp');"> <div class="titulo-rect">RIESGOS Y OPORTUNIDADES</div>
                     </a>
-                    <a href="pages/bi.html" class="rect" style="background-image: url('images/bi.webp');">
-                        <div class="titulo-rect">DASHBOARDS</div>
+                    <a href="/pages/bi.html" class="rect" style="background-image: url('/images/bi.webp');"> <div class="titulo-rect">DASHBOARDS</div>
                     </a>
                 </div>
             </div>
@@ -75,23 +64,22 @@
         function loadHTML(elementId, filePath) {
             fetch(filePath)
                 .then(response => {
-                    if (!response.ok) { 
+                    if (!response.ok) {
                         throw new Error('Error al cargar ' + filePath + ': ' + response.statusText);
                     }
-                    return response.text(); 
+                    return response.text();
                 })
                 .then(html => {
-                    document.getElementById(elementId).innerHTML = html; 
+                    document.getElementById(elementId).innerHTML = html;
 
                     // ***** IMPORTANTE: El script del menú hamburguesa se mueve aquí dentro *****
-                    // Esto asegura que sideMenu y menuBtn existan en el DOM antes de intentar añadir los event listeners
                     const menuBtn = document.getElementById('menuBtn');
                     const sideMenu = document.getElementById('sideMenu');
 
-                    if (menuBtn && sideMenu) { 
+                    if (menuBtn && sideMenu) {
                         menuBtn.addEventListener('click', (e) => {
-                            e.stopPropagation(); 
-                            sideMenu.classList.toggle('active'); 
+                            e.stopPropagation();
+                            sideMenu.classList.toggle('active');
                         });
 
                         document.addEventListener('click', (e) => {
@@ -102,11 +90,11 @@
                     }
                     // ***** FIN del script del menú hamburguesa *****
                 })
-                .catch(error => console.error('Error cargando el menú lateral:', error)); 
+                .catch(error => console.error('Error cargando el menú lateral:', error));
         }
 
-        // Cargar el menú lateral en el placeholder
-        loadHTML('sidebar-placeholder', 'sidebar.html');
+        // Cargar el menú lateral en el placeholder usando ruta absoluta
+        loadHTML('sidebar-placeholder', '/sidebar.html');
     </script>
 </body>
 </html>
