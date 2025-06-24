@@ -81,7 +81,7 @@
                 .then(html => {
                     document.getElementById(elementId).innerHTML = html;
 
-                    // ***** IMPORTANTE: El script del menú hamburguesa se mueve aquí dentro *****
+                    // IMPORTANTE: El script del menú hamburguesa se mueve aquí dentro
                     const menuBtn = document.getElementById('menuBtn');
                     const sideMenu = document.getElementById('sideMenu');
 
@@ -97,13 +97,11 @@
                             }
                         });
                     }
-                    // ***** FIN del script del menú hamburguesa *****
                 })
                 .catch(error => console.error('Error cargando el menú lateral:', error));
         }
 
-        // Cargar el menú lateral en el placeholder
-        // Ajustado para que el sidebar apunte desde la raíz del sitio
+        // RUTA CORREGIDA para cargar el menú lateral
         loadHTML('sidebar-placeholder', '/sidebar.html');
     </script>
 </body>
