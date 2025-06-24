@@ -76,7 +76,7 @@ body {
 /* Estilo para la imagen dentro del logo-fonafe para que se ajuste a su contenedor */
 .logo-fonafe img {
     max-width: 100%; /* Asegura que la imagen no exceda el ancho de su contenedor */
-    height: 45px; /* **CAMBIO CLAVE: Altura fija para el logo en escritorio (ajusta si es necesario)** */
+    height: 43px; /* **CAMBIO CLAVE: Altura fija para el logo en escritorio (ajusta si es necesario)** */
     object-fit: contain; /* Mantiene la proporción de la imagen dentro del contenedor sin recortarla */
     display: block; /* Elimina cualquier espacio adicional debajo de la imagen */
 }
@@ -819,7 +819,7 @@ body {
     }
 
     .logo-fonafe img {
-        height: 45px; /* Reduce la altura del logo para móviles */
+        height: 43px; /* Reduce la altura del logo para móviles */
         max-width: 100%; /* Asegura que no se desborde */
     }
 
