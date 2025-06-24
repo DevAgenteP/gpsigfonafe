@@ -27,8 +27,8 @@ body {
 .top-bar {
     display: flex; /* Utiliza Flexbox */
     align-items: center; /* Centra los elementos verticalmente */
-    justify-content: center; /* **CAMBIO CLAVE: Centra el contenido horizontalmente (útil para el logo)** */
-    padding: 10px 20px; /* Espaciado interno superior/inferior y lateral (¡ahora es el que da el margen!) */
+    justify-content: center; /* Centra el contenido horizontalmente (útil para el logo) */
+    padding: 10px 20px; /* Espaciado interno superior/inferior y lateral */
     height: 60px; /* Altura fija de la barra */
     width: 100%; /* Ocupa todo el ancho disponible */
     position: relative; /* Necesario para posicionar el botón de menú absolutamente */
@@ -37,8 +37,8 @@ body {
 
 /* Botón de menú hamburguesa */
 .menu-btn {
-    position: absolute; /* **CAMBIO CLAVE: Posicionamiento absoluto dentro de .top-bar** */
-    left: 20px; /* **CAMBIO CLAVE: Se posiciona a 20px del borde izquierdo (usando el padding del top-bar)** */
+    position: absolute; /* Posicionamiento absoluto dentro de .top-bar */
+    left: 20px; /* Se posiciona a 20px del borde izquierdo (usando el padding del top-bar) */
     width: 27px; /* Ancho del botón */
     height: 27px; /* Alto del botón */
     display: flex; /* Utiliza Flexbox */
@@ -62,8 +62,6 @@ body {
 
 /* Contenedor del logo de FONAFE */
 .logo-fonafe {
-    /* **CAMBIOS CLAVE: Eliminamos width, height, y margin: 0 auto; aquí** */
-    /* El centrado lo hará .top-bar con justify-content: center; */
     display: flex; /* Utiliza Flexbox para centrar la imagen dentro */
     align-items: center; /* Centra la imagen verticalmente */
     justify-content: center; /* Centra la imagen horizontalmente */
@@ -76,7 +74,7 @@ body {
 /* Estilo para la imagen dentro del logo-fonafe para que se ajuste a su contenedor */
 .logo-fonafe img {
     max-width: 100%; /* Asegura que la imagen no exceda el ancho de su contenedor */
-    height: 43px; /* **CAMBIO CLAVE: Altura fija para el logo en escritorio (ajusta si es necesario)** */
+    height: 43px; /* Altura fija para el logo en escritorio (ajusta si es necesario) */
     object-fit: contain; /* Mantiene la proporción de la imagen dentro del contenedor sin recortarla */
     display: block; /* Elimina cualquier espacio adicional debajo de la imagen */
 }
@@ -803,14 +801,13 @@ body {
     }
 
     .menu-btn {
-        /* **CAMBIO CLAVE: Mantener position: absolute; para que el logo se centre** */
+        /* Mantener position: absolute; para que el logo se centre */
         position: absolute;
         left: 20px; /* Mantiene el margen del borde izquierdo */
         /* Eliminamos margin-right: 15px; ya que no es necesario con position: absolute */
     }
 
     .logo-fonafe {
-        /* **CAMBIO CLAVE: No necesitamos width, height, ni margin: 0 auto; aquí** */
         /* El logo se centrará por el .top-bar */
         /* Solo necesitamos controlar el tamaño de la imagen */
         display: flex; /* Asegura el flexbox si lo tiene */
@@ -894,7 +891,7 @@ body {
 footer {
     background-color: #565A5C; /* Fondo oscuro */
     color: #fff; /* Texto en blanco */
-    padding: 6px 0px; /* Espaciado vertical para un poco de "aire" */
+    padding: 6px 0px; /* Espaciado vertical para un poco de espacio */
     text-align: center; /* Centrar el texto */
     font-size: 0.65em; /* Tamaño de fuente compacto */
     margin-top: auto; /* Empuja el footer hacia abajo */
